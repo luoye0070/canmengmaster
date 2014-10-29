@@ -29,6 +29,8 @@ class FoodInfo {
     int totalSellCount=0;
     //已经做好的
     boolean isReady=false;
+    //类别
+    long classId=0l;
     static constraints = {
         restaurantId(nullable:false,min: 1l)
         name (nullable: false,blank:false,maxSize:32 )
@@ -43,5 +45,6 @@ class FoodInfo {
         sellCount(nullable: false,min:0)
         totalSellCount(nullable: false,min:0);
         isReady(nullable:false);
+        classId(nullable:true,min: 0l);
     }
 }

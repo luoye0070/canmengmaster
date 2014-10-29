@@ -1,6 +1,22 @@
 <%@ page import="lj.data.FoodInfo" %>
 
 <div class="control-group">
+    <label class="control-label" for="name"><g:message code="foodInfo.classId.label" default="ClassId" />
+        <span class="required-indicator">*</span>
+    </label>
+    <div class="controls">
+        <select id="classId" name="classId">
+            <option value="0" ${foodInfoInstance?.classId==0l?"selected=\"selected\"":""}>请选择</option>
+            <g:if test="${foodClassList}">
+                <g:each in="${foodClassList}" var="foodClass">
+                    <option value="${foodClass.id}" ${foodInfoInstance?.classId==foodClass.id?"selected=\"selected\"":""}>${foodClass.name}</option>
+                </g:each>
+            </g:if>
+        </select>
+    </div>
+</div>
+
+<div class="control-group">
     <label class="control-label" for="name"><g:message code="foodInfo.name.label" default="Name" />
         <span class="required-indicator">*</span>
     </label>

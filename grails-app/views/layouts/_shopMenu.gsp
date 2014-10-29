@@ -21,6 +21,13 @@
         <li><g:link controller="authentication" action="authList">饭店认证</g:link></li>
     </g:else>
 
+    <g:if test="${controllerName=="foodClassInfo" && actionName in ["list","edit","create","show"]}">
+        <li class="active"><g:link controller="foodClassInfo" action="list">菜谱类别管理</g:link></li>
+    </g:if>
+    <g:else>
+        <li><g:link controller="foodClassInfo" action="list">菜谱类别管理</g:link></li>
+    </g:else>
+
     <g:if test="${controllerName=="foodManage" && actionName in ["foodList","editFoodInfo"]}">
         <li class="active"><g:link controller="foodManage" action="foodList">菜谱管理</g:link></li>
     </g:if>

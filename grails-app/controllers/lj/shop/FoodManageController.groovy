@@ -5,6 +5,7 @@ import lj.enumCustom.ReCode
 //菜单管理
 class FoodManageController {
     FoodManageService foodManageService;
+    def foodClassManageService;
     def index() {}
 
     //菜单列表
@@ -21,18 +22,25 @@ class FoodManageController {
         def err=null;
         def msg=null;
         def foodInfoInstance=null;
+        def foodClassList=null;
+
+        def reInfo=foodClassManageService.list(params);
+        if(reInfo.recode==ReCode.OK){
+            foodClassList=reInfo.foodClassInfoInstanceList;
+        }
         if(request.method=="GET"){
             if(!params.id){
                 params.id=-1;
             }
-            def reInfo=foodManageService.getFoodInfo(params); //根据ID查询到一个菜单
+            reInfo=foodManageService.getFoodInfo(params); //根据ID查询到一个菜单
             if(reInfo.recode==ReCode.OK){
                 foodInfoInstance=reInfo.foodInfo;
             }
+
         }
         else if(request.method=="POST"){
             params.id=params.foodId;
-            def reInfo=foodManageService.save(params);
+            reInfo=foodManageService.save(params);
             if(reInfo.recode==ReCode.OK){
                 msg="保存成功";
             }
@@ -45,7 +53,7 @@ class FoodManageController {
             foodInfoInstance=reInfo.foodInfo;
         }
 
-        render(view: "editFoodInfo",model: [foodInfoInstance:foodInfoInstance,err:err,msg:msg]);
+        render(view: "editFoodInfo",model: [foodInfoInstance:foodInfoInstance,foodClassList:foodClassList,err:err,msg:msg]);
     }
     //菜单删除
     def delFoodInfo(){

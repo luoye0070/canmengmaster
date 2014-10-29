@@ -72,6 +72,7 @@ public class ReCode {
     public final static def FOOD_NOT_ENOUGH=[code:-55,label:"食品已经卖完"];
     public final static def NO_RECORD=[code:-56,label:"没有记录"];
     public final static def NO_CARTS=[code:-57,label:"没有餐车记录"];
+    public final static def SYSTEM_EXCEPTION = [code:-58, label:"系统异常"];
 //    public Integer code
 //    public String label
 //
